@@ -1,0 +1,115 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(1, 1, 32);
+}
+.body{
+    position: relative;
+}
+
+.heading{
+    position: absolute;
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 100px; */
+    top: 10px;
+    left: 20%;
+    right: 20%;
+    z-index: 1;
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+    text-align: center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+    
+
+   
+}
+
+.list{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* gap: 20px; */
+
+}
+
+.item{
+    /* border: 2px solid blue; */
+    height: 200px;
+    width: 150px;
+    margin: 3px;
+    background-color: black;
+}
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.list{
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.list .item{
+    transition: 0.5s;
+    filter: brightness(0);
+}
+.list .item:hover{
+    filter: brightness(1);
+    transform: translateZ(200px);
+    /* animation: rot 2s infinite; */
+}
+
+/* @keyframes rot{
+    0%{
+
+        transform:translateZ(200px) rotateY(0deg);
+        transform-origin: center;
+    }
+    100%{
+        transform: translateZ(200px) rotateY(360deg);
+        transform-origin: center;
+    }
+    
+
+} */
+
+.list .item:hover + *{
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(40deg);
+}
+.list .item:hover + *+*{
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+.list .item:hover + *+*+*{
+    filter: brightness(0.2);
+    transform: translateZ(30px) rotateY(10deg);
+}
+
+.list .item:has(+*:hover){
+    filter: brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+.list .item:has(+*+*:hover){
+    filter: brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+.list .item:has(+*+*+*:hover){
+    filter: brightness(0.4);
+    transform: translateZ(30px) rotateY(-10deg);
+}
